@@ -1,0 +1,9 @@
+.home-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  background-color: rgb(23, 23, 23);
+  font-size: 18px;
+  font-family: Minecraft;
+}
