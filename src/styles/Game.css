@@ -1,0 +1,14 @@
+.game-image {
+  width: 100%;
+  height: auto;
+}
+
+.dropdown-select {
+  width: 125px;
+  height: 150px;
+  background-color: aquamarine;
+  position: absolute;
+  top: 1px;
+  display: none;
+  border-radius: 12px;
+}
