@@ -1,0 +1,14 @@
+.level-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  gap: 36px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

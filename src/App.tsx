@@ -1,13 +1,18 @@
 import React from "react";
 import logo from "./logo.svg";
-import "./App.css";
-import Header from "./Header";
+import "./styles/App.css";
+import Game from "./Game";
+
+import Home from "./Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/play" element={<Game />} />
+      </Routes>
     </BrowserRouter>
   );
 }

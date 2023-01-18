@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 a {
@@ -19,5 +20,5 @@ code {
 
 @font-face {
   font-family: Minecraft;
-  src: url(./fonts/MinecraftTen-VGORe.ttf);
+  src: url(../fonts/MinecraftTen-VGORe.ttf);
 }
