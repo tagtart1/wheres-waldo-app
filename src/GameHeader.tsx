@@ -2,7 +2,11 @@ import "./styles/GameHeader.css";
 import Timer from "./Timer";
 import { Link } from "react-router-dom";
 
-const GameHeader = () => {
+interface Props {
+  characterIcons: Array<string>;
+}
+
+const GameHeader = ({ characterIcons }: Props) => {
   return (
     <div className="game-header">
       <Link to={"/"}>
@@ -15,7 +19,12 @@ const GameHeader = () => {
         <Timer />
       </span>
       <div className="target-icons">
-        <div className="square"></div>
+        <img
+          className="target-icon"
+          src={characterIcons[0]}
+          alt="Character Icon"
+        ></img>
+
         <div className="square"></div>
         <div className="square"></div>
       </div>

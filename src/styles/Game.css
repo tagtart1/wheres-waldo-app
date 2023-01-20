@@ -12,3 +12,6 @@
   display: none;
   border-radius: 12px;
 }
+.relative {
+  position: relative;
+}
