@@ -3,10 +3,10 @@ import Timer from "./Timer";
 import { Link } from "react-router-dom";
 
 interface Props {
-  characterIcons: Array<string>;
+  targets: Array<{ name: string; iconUrl: string }>;
 }
 
-const GameHeader = ({ characterIcons }: Props) => {
+const GameHeader = ({ targets }: Props) => {
   return (
     <div className="game-header">
       <Link to={"/"}>
@@ -21,12 +21,20 @@ const GameHeader = ({ characterIcons }: Props) => {
       <div className="target-icons">
         <img
           className="target-icon"
-          src={characterIcons[0]}
+          src={targets[0].iconUrl}
           alt="Character Icon"
         ></img>
 
-        <div className="square"></div>
-        <div className="square"></div>
+        <img
+          className="target-icon"
+          src={targets[1].iconUrl}
+          alt="Character Icon"
+        ></img>
+        <img
+          className="target-icon"
+          src={targets[2].iconUrl}
+          alt="Character Icon"
+        ></img>
       </div>
     </div>
   );

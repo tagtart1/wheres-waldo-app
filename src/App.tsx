@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import logo from "./logo.svg";
 import "./styles/App.css";
 import Game from "./Game";
@@ -16,6 +16,7 @@ function App() {
           path="/"
           element={<Home setSelectedLevelName={setSelectedLevelName} />}
         />
+
         <Route path="/play" element={<Game levelName={selectedLevelName} />} />
       </Routes>
     </BrowserRouter>

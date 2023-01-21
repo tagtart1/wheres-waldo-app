@@ -1,0 +1,41 @@
+.dropdown-container {
+  position: absolute;
+}
+
+.dropdown-target-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.dropdown-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  color: white;
+  border-radius: 12px;
+  min-width: 175px;
+  height: auto;
+  background-color: rgb(54, 54, 54);
+  position: absolute;
+  overflow: hidden;
+}
+
+.dropdown-list > li {
+  align-items: center;
+  text-decoration: none;
+  font-family: "Minecraft";
+
+  display: flex;
+  gap: 12px;
+  padding: 8px 0px;
+  padding-left: 10px;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.dropdown-list > li:hover {
+  background-color: rgb(68, 68, 68);
+}
