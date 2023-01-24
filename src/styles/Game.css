@@ -3,6 +3,10 @@
   height: auto;
 }
 
+.game {
+  position: relative;
+}
+
 .relative {
   position: relative;
 }

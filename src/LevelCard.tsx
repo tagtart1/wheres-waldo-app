@@ -5,20 +5,21 @@ import { useEffect } from "react";
 
 interface Props {
   levelName: string;
-  setSelectedLevelName: Function;
 }
 
-const LevelCard = ({ levelName, setSelectedLevelName }: Props) => {
+const LevelCard = ({ levelName }: Props) => {
   const fetchImg = (levelName: string) => {
     return TEST_LEVEL_CROPPED;
   };
+
+  const levelNameFormatted = levelName.toLowerCase().replaceAll(" ", "-");
 
   useEffect(() => {
     // Get the img and cropped img
   }, []);
 
   return (
-    <Link to={"/play"} onClick={() => setSelectedLevelName(levelName)}>
+    <Link to={`/play/${levelNameFormatted}`}>
       <div className="level-display-card">
         <h1 className="level-name">{levelName}</h1>
 

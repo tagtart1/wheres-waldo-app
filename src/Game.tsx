@@ -1,4 +1,3 @@
-import React, { Suspense } from "react";
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
 import "./styles/Game.css";
@@ -14,12 +13,12 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 import distance from "./Distance";
+import GameOver from "./GameOver";
+import { useParams } from "react-router-dom";
 
-interface GameProps {
-  levelName: string;
-}
+const Game = () => {
+  let levelName = useParams();
 
-const Game = ({ levelName }: GameProps) => {
   const [levelImg, setLevelImg] = useState<string>("");
 
   const [targets, setTargets] = useState<
@@ -33,6 +32,8 @@ const Game = ({ levelName }: GameProps) => {
   const [clickCoords, setClickCoords] = useState({ x: 0, y: 0 });
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
+
+  const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
   const calculateClickCoordinate = (event: any) => {
     let pos = event.target.getBoundingClientRect();
@@ -52,20 +53,30 @@ const Game = ({ levelName }: GameProps) => {
 
   const handleTargetSuccess = (targetId: string) => {
     const targetsCopy = [...targets];
+
+    let targetsFound = 0;
     targetsCopy.forEach((target) => {
+      if (target.isFound) targetsFound += 1;
       if (target.id === targetId) {
         target.isFound = true;
+        targetsFound += 1;
       }
     });
+
     setTargets(targetsCopy);
     setShowDropdown(!showDropdown);
+
+    // Check to see if all targets are found
+    if (targetsFound === targetsCopy.length) {
+      setIsGameOver(true);
+    }
   };
 
   const validateTargetSelection = async (targetId: string) => {
     try {
       console.log(clickCoords);
-
-      const docRef = doc(db, levelName, targetId);
+      if (!levelName.id) return;
+      const docRef = doc(db, levelName.id, targetId);
       const characterDoc = await getDoc(docRef);
 
       // Get distance between the click and the actual target's position
@@ -73,6 +84,7 @@ const Game = ({ levelName }: GameProps) => {
         clickCoords,
         characterDoc?.data()?.coordinates
       );
+      console.log(clickDistance);
       // Verifies that the user click is within the vicinity of the target's position
       if (clickDistance < characterDoc?.data()?.coordinateBuffer) {
         handleTargetSuccess(targetId);
@@ -85,7 +97,8 @@ const Game = ({ levelName }: GameProps) => {
   useEffect(() => {
     const getLevelImg = async () => {
       try {
-        const filePath = `${levelName}/LocNar.jpg`;
+        if (!levelName.id) return;
+        const filePath = `${levelName.id}/${levelName.id}.jpg`;
         const imageRef = ref(getStorage(), filePath);
         const imageURL = await getDownloadURL(imageRef);
         setLevelImg(imageURL);
@@ -97,8 +110,8 @@ const Game = ({ levelName }: GameProps) => {
     const getLevelCharacters = async () => {
       try {
         const targetInit: any = [];
-
-        const levelRef = collection(db, levelName);
+        if (!levelName.id) return;
+        const levelRef = collection(db, levelName.id);
         const q = query(levelRef);
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -121,25 +134,24 @@ const Game = ({ levelName }: GameProps) => {
   }, [levelName]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div>
-        <GameHeader targets={targets} />
-        <div className="relative">
-          <img
-            className="game-image"
-            src={levelImg}
-            alt="Playable Level"
-            onClick={calculateClickCoordinate}
-          ></img>
-          <Dropdown
-            targets={targets}
-            clickCoords={clickCoords}
-            isVisible={showDropdown}
-            validateTargetSelection={validateTargetSelection}
-          />
-        </div>
+    <div className="game animate__animated animate__fadeIn">
+      <GameOver isVisible={isGameOver} />
+      <GameHeader targets={targets} />
+      <div className="relative">
+        <img
+          className="game-image"
+          src={levelImg}
+          alt="Playable Level"
+          onClick={calculateClickCoordinate}
+        ></img>
+        <Dropdown
+          targets={targets}
+          clickCoords={clickCoords}
+          isVisible={showDropdown}
+          validateTargetSelection={validateTargetSelection}
+        />
       </div>
-    </Suspense>
+    </div>
   );
 };
 

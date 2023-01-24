@@ -1,23 +1,18 @@
-import { useState, Suspense } from "react";
-import logo from "./logo.svg";
 import "./styles/App.css";
 import Game from "./Game";
 
 import Home from "./Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { db } from "./firebaseConfig";
+import { collection } from "firebase/firestore";
 
 function App() {
-  const [selectedLevelName, setSelectedLevelName] = useState<string>("");
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={<Home setSelectedLevelName={setSelectedLevelName} />}
-        />
+        <Route path="/" element={<Home />} />
 
-        <Route path="/play" element={<Game levelName={selectedLevelName} />} />
+        <Route path="/play/:id" element={<Game />} />
       </Routes>
     </BrowserRouter>
   );

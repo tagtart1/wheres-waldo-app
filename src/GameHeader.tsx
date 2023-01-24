@@ -1,7 +1,6 @@
 import "./styles/GameHeader.css";
 import Timer from "./Timer";
 import { Link } from "react-router-dom";
-import { Suspense } from "react";
 
 interface Props {
   targets: Array<{
