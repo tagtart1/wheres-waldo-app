@@ -1,9 +1,15 @@
 import "./styles/GameHeader.css";
 import Timer from "./Timer";
 import { Link } from "react-router-dom";
+import { Suspense } from "react";
 
 interface Props {
-  targets: Array<{ name: string; iconUrl: string }>;
+  targets: Array<{
+    name: string;
+    iconUrl: string;
+    isFound: boolean;
+    id: string;
+  }>;
 }
 
 const GameHeader = ({ targets }: Props) => {
@@ -19,22 +25,24 @@ const GameHeader = ({ targets }: Props) => {
         <Timer />
       </span>
       <div className="target-icons">
-        <img
-          className="target-icon"
-          src={targets[0].iconUrl}
-          alt="Character Icon"
-        ></img>
-
-        <img
-          className="target-icon"
-          src={targets[1].iconUrl}
-          alt="Character Icon"
-        ></img>
-        <img
-          className="target-icon"
-          src={targets[2].iconUrl}
-          alt="Character Icon"
-        ></img>
+        {targets.map((target, index) =>
+          target.isFound ? (
+            <img
+              key={index}
+              className="target-icon"
+              src={target.iconUrl}
+              alt="Character Icon"
+              style={{ opacity: "40%" }}
+            ></img>
+          ) : (
+            <img
+              key={index}
+              className="target-icon"
+              src={target.iconUrl}
+              alt="Character Icon"
+            ></img>
+          )
+        )}
       </div>
     </div>
   );

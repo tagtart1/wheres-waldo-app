@@ -2,12 +2,23 @@ import "./styles/Dropdown.css";
 import { useEffect } from "react";
 
 interface Props {
-  targets: Array<{ name: string; iconUrl: string }>;
+  targets: Array<{
+    name: string;
+    iconUrl: string;
+    id: string;
+    isFound: boolean;
+  }>;
   clickCoords: { x: number; y: number };
   isVisible: boolean;
+  validateTargetSelection: Function;
 }
 
-const Dropdown = ({ targets, clickCoords, isVisible }: Props) => {
+const Dropdown = ({
+  targets,
+  clickCoords,
+  isVisible,
+  validateTargetSelection,
+}: Props) => {
   useEffect(() => {
     const dropdown = document.getElementById("dropdown");
     if (!dropdown) return;
@@ -24,36 +35,29 @@ const Dropdown = ({ targets, clickCoords, isVisible }: Props) => {
     dropdown.style.top = `${clickCoords.y}%`;
   });
 
+  if (!isVisible) return null;
+
   return (
     <div className="dropdown-container" id="dropdown">
-      {isVisible && (
-        <ul className="dropdown-list">
-          <li>
-            <img
-              className="dropdown-target-icon"
-              src={targets[0].iconUrl}
-              alt={"Target"}
-            />
-            {targets[0].name}
-          </li>
-          <li>
-            <img
-              className="dropdown-target-icon"
-              src={targets[1].iconUrl}
-              alt={"Target"}
-            />
-            {targets[1].name}
-          </li>
-          <li>
-            <img
-              className="dropdown-target-icon"
-              src={targets[2].iconUrl}
-              alt={"Target"}
-            />
-            {targets[2].name}
-          </li>
-        </ul>
-      )}
+      <ul className="dropdown-list">
+        {targets.map((target) =>
+          !target.isFound ? (
+            <li
+              key={target.id}
+              onClick={() => {
+                validateTargetSelection(target.id);
+              }}
+            >
+              <img
+                className="dropdown-target-icon"
+                src={target.iconUrl}
+                alt={"Target"}
+              />
+              {target.name}
+            </li>
+          ) : null
+        )}
+      </ul>
     </div>
   );
 };
