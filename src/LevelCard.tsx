@@ -1,33 +1,39 @@
 import TEST_LEVEL_CROPPED from "./LocNar-cropped.jpg";
 import "./styles/LevelCard.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 interface Props {
   levelName: string;
 }
 
 const LevelCard = ({ levelName }: Props) => {
-  const fetchImg = (levelName: string) => {
-    return TEST_LEVEL_CROPPED;
-  };
+  const [croppedImg, setCroppedImg] = useState<string>("");
 
   const levelNameFormatted = levelName.toLowerCase().replaceAll(" ", "-");
 
   useEffect(() => {
-    // Get the img and cropped img
-  }, []);
+    const fetchImg = async (levelName: string) => {
+      try {
+        const filePath = `${levelName}/${levelName}-cropped.jpg`;
+        const imageRef = ref(getStorage(), filePath);
+        const imageUrl = await getDownloadURL(imageRef);
+        setCroppedImg(imageUrl);
+      } catch (error) {
+        console.error("Error getting the level preview", error);
+      }
+    };
+
+    fetchImg(levelNameFormatted);
+  }, [levelNameFormatted]);
 
   return (
     <Link to={`/play/${levelNameFormatted}`}>
       <div className="level-display-card">
         <h1 className="level-name">{levelName}</h1>
 
-        <img
-          className="display-img"
-          alt="Level Preview"
-          src={fetchImg(levelName)}
-        ></img>
+        <img className="display-img" alt="Level Preview" src={croppedImg}></img>
       </div>
     </Link>
   );

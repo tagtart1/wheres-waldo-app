@@ -5,7 +5,7 @@ import "./styles/Header.css";
 const Header = () => {
   return (
     <div className="home-header-container">
-      <h1>
+      <h1 className="header-logo">
         <span style={{ color: "white" }}>Spot</span>
         <span style={{ color: "#f53d3d" }}>Em</span>
       </h1>

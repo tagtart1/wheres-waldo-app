@@ -15,6 +15,9 @@ import { db } from "./firebaseConfig";
 import distance from "./Distance";
 import GameOver from "./GameOver";
 import { useParams } from "react-router-dom";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import { Store } from "react-notifications-component";
 
 const Game = () => {
   let levelName = useParams();
@@ -48,6 +51,9 @@ const Game = () => {
       y: yPercent,
     });
 
+    console.log(xPercent);
+    console.log(yPercent);
+
     setShowDropdown(!showDropdown);
   };
 
@@ -60,6 +66,19 @@ const Game = () => {
       if (target.id === targetId) {
         target.isFound = true;
         targetsFound += 1;
+        Store.addNotification({
+          title: "Wonderful!",
+          message: `You found ${target.name}!`,
+          type: "success",
+          insert: "bottom",
+          container: "bottom-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
       }
     });
 
@@ -70,6 +89,27 @@ const Game = () => {
     if (targetsFound === targetsCopy.length) {
       setIsGameOver(true);
     }
+  };
+
+  const handleTargetMiss = (targetId: string) => {
+    const targetsCopy = [...targets];
+    targetsCopy.forEach((target) => {
+      if (target.id === targetId) {
+        Store.addNotification({
+          title: "Oops!",
+          message: `That's not ${target.name}!`,
+          type: "danger",
+          insert: "bottom",
+          container: "bottom-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true,
+          },
+        });
+      }
+    });
   };
 
   const validateTargetSelection = async (targetId: string) => {
@@ -88,7 +128,7 @@ const Game = () => {
       // Verifies that the user click is within the vicinity of the target's position
       if (clickDistance < characterDoc?.data()?.coordinateBuffer) {
         handleTargetSuccess(targetId);
-      } else console.log(false);
+      } else handleTargetMiss(targetId);
     } catch (error) {
       console.log(error);
     }
@@ -135,6 +175,7 @@ const Game = () => {
 
   return (
     <div className="game animate__animated animate__fadeIn">
+      <ReactNotifications />
       <GameOver isVisible={isGameOver} />
       <GameHeader targets={targets} />
       <div className="relative">

@@ -5,6 +5,7 @@ import Home from "./Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { db } from "./firebaseConfig";
 import { collection } from "firebase/firestore";
+import Credits from "./Credits";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         <Route path="/play/:id" element={<Game />} />
+        <Route path="/credits" element={<Credits />} />
       </Routes>
     </BrowserRouter>
   );

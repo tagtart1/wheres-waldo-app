@@ -9,7 +9,7 @@ const Home = () => {
       <Header />
       <div className="level-container">
         <LevelCard levelName="THE LOC NAR" />
-        <LevelCard levelName="THE LOC NAR" />
+        <LevelCard levelName="UNIVERSE 113" />
       </div>
     </div>
   );

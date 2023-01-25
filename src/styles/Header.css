@@ -7,3 +7,11 @@
   font-size: 18px;
   font-family: Minecraft;
 }
+
+.header-logo {
+  transition: all 0.3s;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
