@@ -174,9 +174,9 @@ const Game = () => {
   }, [levelName]);
 
   return (
-    <div className="game animate__animated animate__fadeIn">
+    <div className="game ">
       <ReactNotifications />
-      <GameOver isVisible={isGameOver} />
+      <GameOver isVisible={isGameOver} levelName={levelName.id} />
       <GameHeader targets={targets} />
       <div className="relative">
         <img
