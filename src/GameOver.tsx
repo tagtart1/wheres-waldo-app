@@ -41,13 +41,13 @@ const GameOver = ({ isVisible, levelName }: Props) => {
         name: input.value,
         time: gameTime,
         date: format(
-          new Date(date.getFullYear(), date.getMonth(), date.getDay()),
+          new Date(date.getFullYear(), date.getMonth(), date.getDate()),
           "MMM do, yyyy"
         ),
         timeInSeconds: getSecondsFromTime(gameTime),
       });
       // Go to leaderboards
-      navigate("/");
+      navigate("/leaderboard");
     }
   };
 

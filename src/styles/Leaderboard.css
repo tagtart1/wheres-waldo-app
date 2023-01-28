@@ -1,0 +1,81 @@
+.leaderboard-cards {
+  display: flex;
+  gap: 24px;
+
+  margin-top: 24px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.selected {
+  transform: scale(1.05);
+}
+
+.leaderboard-wrapper {
+  height: 100%;
+  font-family: "Minecraft";
+  padding-bottom: 50px;
+}
+
+.selected-name {
+  color: white;
+  background-color: rgb(201, 61, 61);
+  padding: 12px 24px;
+  border-radius: 24px;
+
+  margin: 0;
+}
+
+.leaderboard {
+  width: 1000px;
+  font-size: 18px;
+  color: white;
+
+  border-collapse: collapse;
+  border-radius: 12px;
+  border-style: hidden;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+thead th {
+  background-color: rgb(22, 22, 22);
+  padding: 10px 10px;
+}
+
+thead tr th:first-child {
+  border-top-left-radius: 12px;
+}
+thead tr th:last-child {
+  border-top-right-radius: 12px;
+}
+
+tbody td {
+  background-color: rgb(63, 63, 63);
+  padding: 10px 10px;
+}
+
+.leaderboard tr td:first-child {
+  text-align: center;
+  width: 125px;
+}
+
+th:not(:first-child) {
+  text-align: left;
+}
+
+.leaderboard-row td:first-child {
+  width: 0px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}

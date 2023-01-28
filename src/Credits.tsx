@@ -16,6 +16,7 @@ const Credits = () => {
           <h2>Level Art</h2>
           <div className="credits-row">
             <span>The Loc Nar by Egor Klyuchnyk</span>
+            <span>Universe 113 by Egor Klyuchnyk</span>
           </div>
           <div className="social-links">
             <div className="social-item">

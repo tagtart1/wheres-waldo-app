@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
 const Timer = () => {
-  let timerNums: Array<number> = [0, 0, 0];
-
   const [formattedTime, setFormattedTime] = useState<string>("00:00:00");
 
   useEffect(() => {
+    let timerNums: Array<number> = [0, 0, 0];
     const interval = setInterval(() => {
       timerNums[2] += 1;
       if (timerNums[2] === 60) {

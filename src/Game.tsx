@@ -3,14 +3,7 @@ import Dropdown from "./Dropdown";
 import "./styles/Game.css";
 import GameHeader from "./GameHeader";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  query,
-  doc,
-  getDoc,
-} from "firebase/firestore";
+import { collection, getDocs, query, doc, getDoc } from "firebase/firestore";
 import { db } from "./firebaseConfig";
 import distance from "./Distance";
 import GameOver from "./GameOver";

@@ -1,8 +1,8 @@
-import TEST_LEVEL_CROPPED from "./LocNar-cropped.jpg";
 import "./styles/LevelCard.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { getLinkFriendlyString } from "./HelperFns";
 
 interface Props {
   levelName: string;
@@ -11,7 +11,7 @@ interface Props {
 const LevelCard = ({ levelName }: Props) => {
   const [croppedImg, setCroppedImg] = useState<string>("");
 
-  const levelNameFormatted = levelName.toLowerCase().replaceAll(" ", "-");
+  const levelNameFormatted = getLinkFriendlyString(levelName);
 
   useEffect(() => {
     const fetchImg = async (levelName: string) => {

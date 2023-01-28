@@ -1,0 +1,19 @@
+.leaderboard-img {
+  height: 300px;
+  width: 300px;
+  border-radius: 14px;
+}
+
+.leaderboard-level {
+  background-color: #5c5c5c;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.leaderboard-level {
+  transition: 0.3s all;
+}

@@ -1,8 +1,7 @@
-// @ts-ignore
 import { Link } from "react-router-dom";
 import "./styles/Header.css";
 
-const HeaderCredits = () => {
+const LeaderboardHeader = () => {
   return (
     <div className="home-header-container">
       <Link to={"/"}>
@@ -11,12 +10,12 @@ const HeaderCredits = () => {
           <span style={{ color: "#f53d3d" }}>Em</span>
         </h1>
       </Link>
-      <h2 style={{ color: "white" }}>Credits</h2>
-      <Link to={"/leaderboard"}>
-        <div style={{ color: "white" }}>Leaderboard</div>
+      <h2 style={{ color: "white" }}>Leaderboard</h2>
+      <Link to={"/credits"}>
+        <div style={{ color: "white" }}>Credits</div>
       </Link>
     </div>
   );
 };
 
-export default HeaderCredits;
+export default LeaderboardHeader;
