@@ -1,11 +1,11 @@
 import HeaderCredits from "./HeaderCredits";
-import "./styles/Credits.css";
-import instagramPng from "./images/instagram.png";
-import patreonPng from "./images/patreon.png";
-import twitterPng from "./images/twitter.png";
-import youtubePng from "./images/youtube.png";
-import githubPng from "./images/github-mark-white.png";
-import linkedInPng from "./images/LI-In-Bug.png";
+import "../styles/Credits.css";
+import instagramPng from "../images/instagram.png";
+import patreonPng from "../images/patreon.png";
+import twitterPng from "../images/twitter.png";
+import youtubePng from "../images/youtube.png";
+import githubPng from "../images/github-mark-white.png";
+import linkedInPng from "../images/LI-In-Bug.png";
 import { Link } from "react-router-dom";
 const Credits = () => {
   return (

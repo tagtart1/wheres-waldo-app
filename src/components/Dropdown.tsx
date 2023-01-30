@@ -1,4 +1,4 @@
-import "./styles/Dropdown.css";
+import "../styles/Dropdown.css";
 import { useEffect } from "react";
 
 interface Props {
@@ -39,6 +39,9 @@ const Dropdown = ({
 
   return (
     <div className="dropdown-container" id="dropdown">
+      <div className="targeting-box">
+        <div className="target-dot"></div>
+      </div>
       <ul className="dropdown-list">
         {targets.map((target) =>
           !target.isFound ? (

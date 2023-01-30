@@ -6,7 +6,7 @@ import { getLinkFriendlyString } from "./HelperFns";
 import LeaderboardCard from "./LeaderboardCard";
 import LeaderboardHeader from "./LeaderboardHeader";
 
-import "./styles/Leaderboard.css";
+import "../styles/Leaderboard.css";
 
 interface leaderboardProps {
   name: string;

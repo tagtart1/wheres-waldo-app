@@ -1,4 +1,4 @@
-import "./styles/App.css";
+import "../styles/App.css";
 import Game from "./Game";
 
 import Home from "./Home";

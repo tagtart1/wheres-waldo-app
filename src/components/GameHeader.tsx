@@ -1,4 +1,4 @@
-import "./styles/GameHeader.css";
+import "../styles/GameHeader.css";
 import Timer from "./Timer";
 import { Link } from "react-router-dom";
 

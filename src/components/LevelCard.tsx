@@ -1,4 +1,4 @@
-import "./styles/LevelCard.css";
+import "../styles/LevelCard.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";

@@ -1,6 +1,6 @@
 import Header from "./Header";
 import LevelCard from "./LevelCard";
-import "./styles/Home.css";
+import "../styles/Home.css";
 import "animate.css";
 
 const Home = () => {

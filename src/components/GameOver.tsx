@@ -1,4 +1,4 @@
-import "./styles/GameOver.css";
+import "../styles/GameOver.css";
 
 import { useEffect, useState } from "react";
 import { Link, redirect, useNavigate } from "react-router-dom";

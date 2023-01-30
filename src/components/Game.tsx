@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
-import "./styles/Game.css";
+import "../styles/Game.css";
 import GameHeader from "./GameHeader";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { collection, getDocs, query, doc, getDoc } from "firebase/firestore";

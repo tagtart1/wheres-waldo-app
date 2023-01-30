@@ -18,7 +18,11 @@
   height: auto;
   background-color: rgb(54, 54, 54);
   position: absolute;
+  left: 18px;
+  top: 18px;
   overflow: hidden;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .dropdown-list > li {
@@ -38,4 +42,30 @@
 
 .dropdown-list > li:hover {
   background-color: rgb(68, 68, 68);
+}
+
+.targeting-box {
+  background-color: rgba(0, 255, 255, 0);
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  border-radius: 12px;
+
+  border: 3px dotted rgb(255, 255, 255);
+
+  left: -30px;
+  top: -32px;
+  pointer-events: none;
+}
+
+.target-dot {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+
+  height: 5px;
+  width: 5px;
+  top: 45%;
+  left: 45%;
+  background-color: red;
 }

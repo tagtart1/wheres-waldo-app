@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { getLinkFriendlyString } from "./HelperFns";
-import "./styles/LeaderboardCard.css";
+import "../styles/LeaderboardCard.css";
 
 interface LeaderboardProps {
   handleLeaderboardChange: Function;
