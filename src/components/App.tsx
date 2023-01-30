@@ -9,7 +9,7 @@ import Leaderboard from "./Leaderboard";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/wheres-waldo-app">
       <Routes>
         <Route path="/" element={<Home />} />
 

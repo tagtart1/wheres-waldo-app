@@ -25,6 +25,8 @@ const Game = () => {
     { name: "", iconUrl: "", id: "", isFound: false },
   ]);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const [clickCoords, setClickCoords] = useState({ x: 0, y: 0 });
 
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
@@ -124,6 +126,7 @@ const Game = () => {
       } else handleTargetMiss(targetId);
     } catch (error) {
       console.log(error);
+      console.log(error);
     }
   };
 
@@ -146,7 +149,11 @@ const Game = () => {
         if (!levelName.id) return;
         const levelRef = collection(db, levelName.id);
         const q = query(levelRef);
+
+        setIsLoading(true);
+
         const querySnapshot = await getDocs(q);
+
         querySnapshot.forEach((doc) => {
           const target = { name: null, iconUrl: null, id: "", isFound: false };
           target.id = doc.id;
@@ -155,7 +162,7 @@ const Game = () => {
           target.isFound = false;
           targetInit.push(target);
         });
-
+        setIsLoading(false);
         setTargets(targetInit);
       } catch (error) {
         console.error("Error occurred when fetching characters", error);
@@ -170,7 +177,7 @@ const Game = () => {
     <div className="game ">
       <ReactNotifications />
       <GameOver isVisible={isGameOver} levelName={levelName.id} />
-      <GameHeader targets={targets} />
+      <GameHeader targets={targets} isLoading={isLoading} />
       <div className="relative">
         <img
           className="game-image"
